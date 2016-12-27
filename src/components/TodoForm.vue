@@ -1,0 +1,40 @@
+<template>
+    <div>
+        <form @submit.prevent="addTodo(newTodo)">
+            <div class="form-group">
+                <input type="text"
+                       v-model="newTodo.title"
+                       class="form-control"
+                       placeholder="Add a new todo">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" type="submit">Add Todo</button>
+            </div>
+        </form>
+    </div>
+</template>
+
+<script lang="babel">
+    export default {
+        data () {
+            return {
+                newTodo: {
+                    id: null,
+                    title: '',
+                    completed: false
+                }
+            }
+        },
+        props: ['todos'],
+        methods: {
+            addTodo: function (newTodo) {
+                this.todos.push(newTodo)
+                this.newTodo = {id: null, title: '', completed: false}
+            }
+        }
+    }
+</script>
+
+<style>
+
+</style>
